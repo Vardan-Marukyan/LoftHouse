@@ -1,4 +1,3 @@
-/* Nav icon */
 const navBtn = document.querySelector('.nav-icon-btn');
 const navIcon = document.querySelector('.nav-icon');
 const nav = document.querySelector('.header__top-row');
@@ -9,10 +8,9 @@ navBtn.onclick = function () {
     document.body.classList.toggle('no-scroll');
 }
 
-/* Phone Mask */
+
 mask('[data-tel-input]');
 
-// Удаляем '+' если больше ничего не введено, чтобы показать placeholder
 const phoneInputs = document.querySelectorAll('[data-tel-input]');
 phoneInputs.forEach((input)=>{
 	input.addEventListener('input', ()=>{
@@ -23,21 +21,10 @@ phoneInputs.forEach((input)=>{
 	})
 });
 
-/* Yandex Map */
-
-// Функция ymaps.ready() будет вызвана, когда
-// загрузятся все компоненты API, а также когда будет готово DOM-дерево.
 ymaps.ready(init);
 function init(){
-	// Создание карты.
 	var map = new ymaps.Map('map', {
-		// Координаты центра карты.
-		// Порядок по умолчанию: «широта, долгота».
-		// Чтобы не определять координаты центра карты вручную,
-		// воспользуйтесь инструментом Определение координат.
 		center: [59.943543, 30.338928],
-		// Уровень масштабирования. Допустимые значения:
-		// от 0 (весь мир) до 19.
 		zoom: 16,
 	});
 
@@ -66,10 +53,8 @@ function init(){
 	map.controls.remove('trafficControl'); // удаляем контроль трафика
 	map.controls.remove('typeSelector'); // удаляем тип
 
-	// map.controls.remove('fullscreenControl'); // удаляем кнопку перехода в полноэкранный режим
-	// map.controls.remove('zoomControl'); // удаляем контрол зуммирования
-	map.controls.remove('rulerControl'); // удаляем контрол правил
-	map.behaviors.disable(['scrollZoom']); // отключаем скролл карты (опционально)
+	map.controls.remove('rulerControl');
+	map.behaviors.disable(['scrollZoom']);
 
 	map.geoObjects.add(myPlacemark);
     myPlacemark.balloon.open();
